@@ -19,7 +19,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { Button } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import FilterListIcon from "@material-ui/icons/FilterList";
 import HelpIcon from "@material-ui/icons/Help";
 import { withRouter } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
@@ -126,7 +125,6 @@ const MiniDrawer = (props) => {
           <Typography variant="h6" style={{ flexGrow: 1 }}>
             Admin Dashboard
           </Typography>
-          <Button color="inherit"> Login</Button>
 
           <IconButton color="inherit" aria-label="account">
             <AccountCircle />
@@ -169,9 +167,9 @@ const MiniDrawer = (props) => {
               onClick: () => history.push("/crawler"),
             },
             {
-              text: "Recommender",
+              text: "Recomender",
               icon: <HelpIcon />,
-              onClick: () => history.push("/"),
+              onClick: () => history.push("/Recommender"),
             },
           ].map(({ text, icon, onClick }, index) => (
             <ListItem button key={text} onClick={onClick}>
@@ -180,19 +178,9 @@ const MiniDrawer = (props) => {
             </ListItem>
           ))}
         </List>
-        {/* <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List> */}
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        {/* content */}
 
         <div>{children}</div>
       </main>

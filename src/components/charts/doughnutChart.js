@@ -3,7 +3,7 @@ import { Doughnut } from "react-chartjs-2";
 
 function DoughnutChart({
   dataCharts: { labels, data },
-  label = "Not selected",
+  label = "notselected",
 }) {
   const state = {
     labels,

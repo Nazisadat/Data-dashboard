@@ -1,7 +1,5 @@
-// src/components/pagination.table.js
 import React, { Component } from "react";
 import ReactTable from "react-table";
-// import "react-table/react-table.css";
 
 import {
   useTable,
@@ -112,6 +110,8 @@ function Table({ columns, data, onColumnClick }) {
     e.preventDefault();
     return;
   };
+  console.log(headerGroups);
+  const headerGroup = headerGroups[1];
 
   // Render the UI for your table
   return (
@@ -123,7 +123,7 @@ function Table({ columns, data, onColumnClick }) {
             /> */}
       <table className="table" {...getTableProps()}>
         <thead>
-          {headerGroups.map((headerGroup) => (
+          {headerGroup && (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => {
                 const { onClick, otherProps } = column.getHeaderProps(
@@ -153,7 +153,7 @@ function Table({ columns, data, onColumnClick }) {
                 );
               })}
             </tr>
-          ))}
+          )}
         </thead>
 
         <tbody {...getTableBodyProps()}>
@@ -163,7 +163,12 @@ function Table({ columns, data, onColumnClick }) {
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                    <td
+                      style={{ whiteSpace: "nowrap" }}
+                      {...cell.getCellProps()}
+                    >
+                      {cell.render("Cell")}
+                    </td>
                   );
                 })}
               </tr>
@@ -175,8 +180,6 @@ function Table({ columns, data, onColumnClick }) {
         Pagination can be built however you'd like. 
         This is just a very basic UI implementation:
       */}
-
-      <br></br>
 
       <nav aria-label="Page navigation example">
         <ul className="pagination justify-content-center">
@@ -236,7 +239,7 @@ function Table({ columns, data, onColumnClick }) {
             onChange={(e) => {
               setPageSize(Number(e.target.value));
             }}
-            style={{ width: "120px", height: "38px" }}
+            style={{ top: "0px", width: "120px", height: "38px" }}
           >
             {[5, 10, 20, 30, 40, 50].map((pageSize) => (
               <option key={pageSize} value={pageSize}>

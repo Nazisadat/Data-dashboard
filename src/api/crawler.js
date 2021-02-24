@@ -11,10 +11,22 @@ function startCrawler() {
   });
 }
 
+function uploadFile(file) {
+  const data = new FormData();
+  data.append("file", file);
+  data.append("field_name", 23);
+  return request({
+    url: `${currentServiceUrl}/api/upload`,
+    method: "post",
+    data,
+  });
+}
+
 const downloadSpecification = `${currentServiceUrl}/api/download`;
 
 const CrawlerService = {
   startCrawler,
+  uploadFile,
   downloadSpecification,
 };
 
